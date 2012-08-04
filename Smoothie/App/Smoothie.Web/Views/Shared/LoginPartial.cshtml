@@ -1,0 +1,9 @@
+﻿@model Smoothie.Domain.Dto.UserDataDto
+           
+@if(Request.IsAuthenticated) {
+    <text>Welcome @Model.DisplayName [ @Html.ActionLink("Log Off", MVC.Account.Signup()) ]</text>
+}
+else {
+    @:[ @Html.ActionLink("Login", MVC.Account.Login()) ]
+    @:[ @Html.ActionLink("Register", MVC.Account.Signup()) ]
+}
