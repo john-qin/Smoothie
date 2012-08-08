@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Web;
+using System.Web.Mvc;
 using System.Web.Security;
 using ServiceStack.Text;
 
@@ -8,24 +9,7 @@ namespace Smoothie.Web.Infrastructure.Binders
     {
         public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         {
-            /*
-            if (controllerContext.RequestContext.HttpContext.Request.IsAuthenticated)
-            {
-                var cookie =
-                    controllerContext.RequestContext.HttpContext.Request.Cookies[FormsAuthentication.FormsCookieName];
-
-                if (cookie == null)
-                    return null;
-
-                var decrypted = FormsAuthentication.Decrypt(cookie.Value);
-
-                if (!string.IsNullOrWhiteSpace(decrypted.UserData))
-                    return JsonSerializer.DeserializeFromString<T>(decrypted.UserData);
-            }
-
-            return null;
-             */
-            return UserData.User<T>(controllerContext);
+            return UserData.User<T>(controllerContext.RequestContext.HttpContext);
         }
 
 
@@ -34,12 +18,13 @@ namespace Smoothie.Web.Infrastructure.Binders
 
     public static class UserData
     {
-        public static object User<T>(ControllerContext controllerContext)
+        public static object User<T>(System.Web.HttpContextBase context) //(ControllerContext controllerContext)
         {
-            if (controllerContext.RequestContext.HttpContext.Request.IsAuthenticated)
+            //if (controllerContext.RequestContext.HttpContext.Request.IsAuthenticated)
+            if (context.Request.IsAuthenticated)
             {
-                var cookie =
-                    controllerContext.RequestContext.HttpContext.Request.Cookies[FormsAuthentication.FormsCookieName];
+                var cookie = context.Request.Cookies[FormsAuthentication.FormsCookieName];
+                   // controllerContext.RequestContext.HttpContext.Request.Cookies[FormsAuthentication.FormsCookieName];
 
                 if (cookie == null)
                     return null;

@@ -22,6 +22,6 @@ namespace Smoothie.Domain.Entities
         public Status Status { get; set; }
         public string Ip { get; set; }
 
-        public bool IsAdministrator { get; set; }
+        public bool IsAdmin { get; set; }
     }
 }

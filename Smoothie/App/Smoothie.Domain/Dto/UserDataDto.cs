@@ -12,7 +12,7 @@ namespace Smoothie.Domain.Dto
         public string Email { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime LastLogin { get; set; }
-        public bool IsAdministrator { get; set; }
+        public bool IsAdmin{ get; set; }
 
     }
 }

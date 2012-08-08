@@ -23,9 +23,6 @@ using T4MVC;
 namespace Smoothie.Web.Areas.Admin.Controllers {
     public partial class HomeController {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public HomeController() { }
-
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected HomeController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -87,6 +84,12 @@ namespace Smoothie.Web.Areas.Admin.Controllers {
 
         public override System.Web.Mvc.ActionResult Login() {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Login);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Login(Smoothie.Domain.ViewModels.UserLoginViewModel user) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Login);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "user", user);
             return callInfo;
         }
 

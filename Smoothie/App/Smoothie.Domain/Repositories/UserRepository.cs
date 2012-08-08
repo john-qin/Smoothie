@@ -13,7 +13,7 @@ namespace Smoothie.Domain.Repositories
             using (IDbConnection conn = OpenConnection())
             {
                 const string query = "SELECT u.Id, u.Email,u.Password, u.Firstname,u.Lastname,u.CreatedDate,u.LastLogin," +
-                                    "       u.AccountType, u.Roles, u.Displayname, u.Avatar, u.ThirdPartyId, u.Status, u.Ip" +
+                                    "       u.AccountType, u.Roles, u.Displayname, u.Avatar, u.ThirdPartyId, u.Status, u.Ip, u.IsAdmin" +
                                     " FROM dbo.[User] AS u" +
                                     " WHERE u.Email = @email AND u.Password = @password AND u.AccountType = accountType";
 
@@ -36,7 +36,7 @@ namespace Smoothie.Domain.Repositories
             using (IDbConnection conn = OpenConnection())
             {
                 const string query = "SELECT u.Id, u.Email,u.Password, u.Firstname,u.Lastname,u.CreatedDate,u.LastLogin," +
-                                    "       u.AccountType, u.Roles, u.Displayname, u.Avatar, u.ThirdPartyId, u.Status, u.Ip" +
+                                    "       u.AccountType, u.Roles, u.Displayname, u.Avatar, u.ThirdPartyId, u.Status, u.Ip, u.IsAdmin" +
                                     " FROM dbo.[User] AS u" +
                                     " WHERE u.Email = @Email AND u.AccountType = @AccountType";
 
@@ -67,7 +67,7 @@ namespace Smoothie.Domain.Repositories
             using (IDbConnection conn = OpenConnection())
             {
                 const string query = "SELECT u.Id, u.Email,u.Password, u.Firstname,u.Lastname,u.CreatedDate,u.LastLogin," +
-                                    "       u.AccountType, u.Roles, u.Displayname, u.Avatar, u.ThirdPartyId, u.Status, u.Ip" +
+                                    "       u.AccountType, u.Roles, u.Displayname, u.Avatar, u.ThirdPartyId, u.Status, u.Ip, u.IsAdmin" +
                                     " FROM dbo.[User] AS u" +
                                     " WHERE u.Id = @Id";
 
@@ -81,11 +81,11 @@ namespace Smoothie.Domain.Repositories
             {
                 const string query = "INSERT INTO dbo.[User]" +
                                      "        ( Email ,Password ,Firstname ,Lastname ,CreatedDate ,LastLogin , AccountType ," +
-                                     "          Roles ,Displayname ,Avatar ,ThirdPartyId ,Status ,Ip " +
+                                     "          Roles ,Displayname ,Avatar ,ThirdPartyId ,Status ,Ip, IsAdmin" +
                                      "        )" +
                                      "VALUES  ( @Email, @Password , @Firstname , @Lastname , @CreatedDate , @LastLogin ," +
-                                     "          @AccountType , @Roles , @Displayname , @Avatar , @ThirdPartyId ," +
-                                     "          @Status , @Ip" +
+                                     "          @AccountType , @Roles , @Displayname , @Avatar , @ThirdPartyId," +
+                                     "          @Status , @Ip, @IsAdmin" +
                                      "        )";
 
                 var parameters = new
@@ -102,7 +102,8 @@ namespace Smoothie.Domain.Repositories
                                          Avatar = item.Avatar,
                                          ThirdPartyId = item.ThirdPartyId,
                                          Status = item.Status,
-                                         Ip = item.Ip
+                                         Ip = item.Ip,
+                                         IsAdmin = item.IsAdmin
                                      };
 
                 conn.Execute(query, parameters);

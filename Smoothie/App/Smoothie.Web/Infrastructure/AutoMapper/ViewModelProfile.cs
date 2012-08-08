@@ -33,9 +33,12 @@ namespace Smoothie.Web.Infrastructure.AutoMapper
                 .ForMember(dest => dest.Avatar, t => t.MapFrom(s => ""))
                 .ForMember(dest => dest.ThirdPartyId, t => t.MapFrom(s => ""))
                 .ForMember(dest => dest.Status, t => t.MapFrom(s => Status.Approved))
-                .ForMember(dest => dest.Ip, t => t.MapFrom(s => ""));
+                .ForMember(dest => dest.Ip, t => t.MapFrom(s => ""))
+                .ForMember(dest => dest.IsAdmin, t => t.MapFrom(s => false));
 
             CreateMap<User, UserDataDto>();
+
+            CreateMap<UserDataDto, User>();
 
 
         }

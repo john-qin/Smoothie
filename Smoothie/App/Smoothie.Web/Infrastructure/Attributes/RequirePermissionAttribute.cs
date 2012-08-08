@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Web;
 using System.Web.Mvc;
+using Smoothie.Domain.Dto;
 using Smoothie.Domain.Entities;
 using Smoothie.Domain.Enums;
 using Smoothie.Services;
+using Smoothie.Web.Infrastructure.Binders;
+using AutoMapper;
 
 namespace Smoothie.Web.Infrastructure.Filters
 {
@@ -36,7 +39,17 @@ namespace Smoothie.Web.Infrastructure.Filters
         {
             // Get the current user, you could store in session or the HttpContext if you to.
             // It would be set inside teh FormsAuthenticationService
-            var userSession = (User) filterContext.HttpContext.Session["CurrentUser"];
+            User userSession = null;
+
+            if (filterContext.HttpContext.Request.IsAuthenticated)
+            {
+                var userData = (UserDataDto)UserData.User<UserDataDto>(filterContext.HttpContext);
+
+                if (userData != null)
+                    userSession = Mapper.Map<UserDataDto, User>(userData);
+
+            }
+
             var success = AuthorizationService.Authorize(userSession, _roles);
 
             if (success)

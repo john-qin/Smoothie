@@ -1,22 +1,16 @@
-﻿
-using System.Web;
+﻿using Smoothie.Domain.Entities;
+using Smoothie.Domain.Enums;
 
 namespace Smoothie.Services
 {
     public class FormsAuthorizationService : IAuthorizationService
     {
-        //private readonly HttpContextBase _httpContext;
 
-        //public FormsAuthorizationService(HttpContextBase httpContext)
-        //{
-        //    _httpContext = httpContext;
-        //}
-
-        public bool Authorize(Domain.Entities.User user, Domain.Enums.RoleType requiredRoles)
+        public bool Authorize(User user, RoleType requiredRoles)
         {
             if (user == null)
                 return false;
-            if (user.IsAdministrator)
+            if (user.IsAdmin)
                 return true;
 
             // Check if the roles enum has the specific role bit set.

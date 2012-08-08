@@ -117,7 +117,6 @@
     <Compile Include="Infrastructure\Attributes\RequirePermissionAttribute.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Infrastructure\Authentication\HttpResponseBaseExtensions.cs" />
     <Compile Include="Infrastructure\AutoMapper\AutoMapperConfiguration.cs" />
     <Compile Include="Infrastructure\AutoMapper\ViewModelProfile.cs" />
     <Compile Include="Infrastructure\Binders\UserDataModelBinder.cs" />
@@ -139,6 +138,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Admin\Images\glyphicons-halflings-white.png" />
+    <Content Include="Content\Admin\Images\glyphicons-halflings.png" />
+    <Content Include="Content\Admin\Javascripts\bootstrap.min.js" />
+    <Content Include="Content\Admin\Styles\bootstrap-responsive.min.css" />
+    <Content Include="Content\Admin\Styles\bootstrap.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery.showpassword.min.js" />
     <Content Include="Web.config">
@@ -165,24 +169,6 @@
     <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
     <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
     <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
-    <Content Include="Scripts\backup\jquery-1.4.4.js" />
-    <Content Include="Scripts\backup\jquery-1.4.4.min.js" />
-    <Content Include="Scripts\backup\jquery-1.4.4-vsdoc.js" />
-    <Content Include="Scripts\backup\jquery.unobtrusive-ajax.js" />
-    <Content Include="Scripts\backup\jquery.unobtrusive-ajax.min.js" />
-    <Content Include="Scripts\backup\jquery.validate.js" />
-    <Content Include="Scripts\backup\jquery.validate.min.js" />
-    <Content Include="Scripts\backup\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\backup\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\backup\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\backup\jquery-ui.js" />
-    <Content Include="Scripts\backup\jquery-ui.min.js" />
-    <Content Include="Scripts\backup\MicrosoftAjax.js" />
-    <Content Include="Scripts\backup\MicrosoftAjax.debug.js" />
-    <Content Include="Scripts\backup\MicrosoftMvcAjax.js" />
-    <Content Include="Scripts\backup\MicrosoftMvcAjax.debug.js" />
-    <Content Include="Scripts\backup\MicrosoftMvcValidation.js" />
-    <Content Include="Scripts\backup\MicrosoftMvcValidation.debug.js" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Account\ChangePassword.cshtml" />
     <Content Include="Views\Account\ChangePasswordSuccess.cshtml" />
@@ -196,7 +182,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Infrastructure\Authentication\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -215,9 +201,11 @@
     <Content Include="Views\Account\Signup.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Admin\Views\Web.config" />
+    <Content Include="Areas\Admin\Web.config" />
     <Content Include="Areas\Admin\Views\Home\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <None Include="T4MVC.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>T4MVC.cs</LastGenOutput>

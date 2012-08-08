@@ -146,7 +146,7 @@ namespace Smoothie.Web.Controllers
                 var confirmation = _userService.AddUser(newUser, AccountType.Smoothie);
 
                 if (confirmation.WasSuccessful)
-                    return RedirectToAction(MVC.Account.Login());
+                    return RedirectToAction(MVC.Home.Index());
 
                 ModelState.AddModelError("Email", confirmation.Message);
             }
