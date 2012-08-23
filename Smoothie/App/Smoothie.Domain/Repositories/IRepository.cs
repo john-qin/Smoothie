@@ -1,10 +1,10 @@
 ﻿
 namespace Smoothie.Domain.Repositories
 {
-    public interface IRepository<T>
+    public interface IRepository<T, TPK>
     {
-        T Get(int id);
+        T Get(TPK id);
         int Save(T item);
-        int Delete(int id);
+        int Delete(TPK id);
     }
 }

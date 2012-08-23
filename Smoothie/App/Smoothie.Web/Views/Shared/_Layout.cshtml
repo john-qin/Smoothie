@@ -6,30 +6,56 @@
     @RenderSection("meta", false)
 </head>
 <body>
-    <div class="page">
-        <div id="header">
-            <div id="title">
-                <h1>.</h1>
-            </div>
-            <div id="logindisplay">
-                @Html.Partial("_LogOnPartial")
-            </div>
-            <div id="menucontainer">
-                <ul id="menu">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                </ul>
-            </div>
+    <div id="header">
+        <div id="logo">
+            <img src="@Links.Content.images.logo_png" title="logo" alt="logo"/></div>
+        <div id="menuSection">
+            <ul id="menu" class="clearfix">
+                <li>@Html.ActionLink("make a smoothie", MVC.Home.Index())</li>
+                <li>@Html.ActionLink("shared smoothies", MVC.Home.Index())</li>
+                <li>@Html.ActionLink("my smoothies", MVC.Home.Index())</li>
+                <li>@Html.ActionLink("blog", MVC.Home.Index())</li>
+            </ul>
+            <ul id="logon">
+                @if (Request.IsAuthenticated)
+                {
+                    <li>@Html.ActionLink(Context.User.Identity.Name, MVC.Home.Index())</li>
+                
+                }
+                else
+                {
+                    <li>@Html.ActionLink("Join", MVC.Account.Signup())</li>
+                    <li class="bar">|</li>
+                    <li>@Html.ActionLink("Sign In", MVC.Account.Login())</li>
+                }
+                <li class="bar">|</li>
+                <li>@Html.ActionLink("Help", MVC.Admin.Food.Index())</li>
+            </ul>
         </div>
-        <div id="main">
-            @if (Request.IsAuthenticated)
-            {
-                Html.RenderAction("UserProfile", "Home");
-            }
-            @RenderBody()
-            <div id="footer">
-            </div>
+    </div>
+    @RenderBody()
+    <div id="footer">
+        <div id="divider">
+            We are using the <a href="">USDA Nutrient Database</a> and product labels for Standard
+            Reference.
         </div>
+        <ul id="links">
+            <li>@Html.ActionLink("Make a Smoothie", MVC.Home.Index())</li>
+            <li class="bar">|</li>
+            <li>@Html.ActionLink("Shared Smoothies", MVC.Home.Index())</li>
+            <li class="bar">|</li>
+            <li>@Html.ActionLink("My Smoothies", MVC.Home.Index())</li>
+            <li class="bar">|</li>
+            <li>@Html.ActionLink("Sign In", MVC.Home.Index())</li>
+            <li class="bar">|</li>
+            <li>@Html.ActionLink("Join", MVC.Home.Index())</li>
+            <li class="bar">|</li>
+            <li>@Html.ActionLink("My Account", MVC.Home.Index())</li>
+            <li class="bar">|</li>
+            <li>@Html.ActionLink("About Us", MVC.Home.Index())</li>
+            <li class="bar">|</li>
+            <li>@Html.ActionLink("Contact Us", MVC.Home.Index())</li>
+        </ul>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"

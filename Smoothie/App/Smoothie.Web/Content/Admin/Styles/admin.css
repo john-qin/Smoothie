@@ -1,0 +1,22 @@
+﻿body {
+    background-color: #FFFFFF;
+    background-position: 0 40px;
+    background-repeat: repeat-x;
+    padding-top: 90px;
+    position: relative;
+}
+.navbar-fixed-top .brand {
+    -moz-transition: all 0.2s linear 0s;
+    color: #000000;
+    float: right;
+    font-weight: bold;
+    margin-left: 20px;
+    padding-left: 0;
+    padding-right: 0;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 30px rgba(255, 255, 255, 0.125);
+}
+.navbar-fixed-top .brand:hover {
+    text-decoration: none;
+}
+
+span.field-validation-error { font-size: 11px;color: #c00;}

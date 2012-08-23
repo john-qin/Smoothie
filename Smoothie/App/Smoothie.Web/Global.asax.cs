@@ -56,11 +56,20 @@ namespace Smoothie.Web
 
 
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
-            builder.RegisterType<UserService>().As<IUserService>();
+
             builder.RegisterType<UserRepository>().As<IUserRepository>();
+            builder.RegisterType<FoodRepository>().As<IFoodRepository>();
+            builder.RegisterType<SmoothieRepository>().As<ISmoothieRepository>();
+
+            builder.RegisterType<UserService>().As<IUserService>();
+            builder.RegisterType<FoodService>().As<IFoodService>();
+            builder.RegisterType<SmoothieService>().As<ISmoothieService>(); 
+
             builder.RegisterType<MappingService>().As<IMappingService>();
             builder.RegisterType<FormsAuthenticationService>().As<IAuthenticationService>();
             builder.RegisterType<FormsAuthorizationService>().As<IAuthorizationService>();
+
+            
 
 
             builder.RegisterFilterProvider();

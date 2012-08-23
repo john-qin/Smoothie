@@ -39,6 +39,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,18 +48,35 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dto\ActionConfirmation.cs" />
+    <Compile Include="Dto\EnumItem.cs" />
     <Compile Include="Dto\FacebookDto.cs" />
+    <Compile Include="Dto\FoodListDto.cs" />
+    <Compile Include="Dto\FoodPagination.cs" />
+    <Compile Include="Dto\PageListDto.cs" />
+    <Compile Include="Dto\PagingDto.cs" />
     <Compile Include="Dto\TwitterDto.cs" />
     <Compile Include="Dto\UserDataDto.cs" />
+    <Compile Include="Entities\Food.cs" />
+    <Compile Include="Dto\FoodGroupDto.cs" />
+    <Compile Include="Entities\Category.cs" />
+    <Compile Include="Entities\Nutrient.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Enums\AccountType.cs" />
+    <Compile Include="Enums\FoodStatus.cs" />
     <Compile Include="Enums\RoleType.cs" />
     <Compile Include="Enums\Status.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
+    <Compile Include="Repositories\FoodRepository.cs" />
+    <Compile Include="Repositories\IFoodRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Repositories\ISmoothieRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
+    <Compile Include="Repositories\SmoothieRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="ViewModels\Admin\AdminFoodViewModel.cs" />
+    <Compile Include="ViewModels\Admin\EditFoodViewModel.cs" />
+    <Compile Include="ViewModels\MakeSmoothieViewModel.cs" />
     <Compile Include="ViewModels\UserLoginViewModel.cs" />
     <Compile Include="ViewModels\UserRegisterViewModel.cs" />
   </ItemGroup>

@@ -23,9 +23,6 @@ using T4MVC;
 namespace Smoothie.Web.Controllers {
     public partial class HomeController {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public HomeController() { }
-
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected HomeController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -84,6 +81,7 @@ namespace Smoothie.Web.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_Index {
             public readonly string userData = "userData";
+            public readonly string category = "category";
         }
         static readonly ActionParamsClass_UserProfile s_params_UserProfile = new ActionParamsClass_UserProfile();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -107,9 +105,10 @@ namespace Smoothie.Web.Controllers {
     public class T4MVC_HomeController: Smoothie.Web.Controllers.HomeController {
         public T4MVC_HomeController() : base(Dummy.Instance) { }
 
-        public override System.Web.Mvc.ActionResult Index(Smoothie.Domain.Dto.UserDataDto userData) {
+        public override System.Web.Mvc.ActionResult Index(Smoothie.Domain.Dto.UserDataDto userData, int category) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Index);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "userData", userData);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "category", category);
             return callInfo;
         }
 

@@ -1,0 +1,372 @@
+﻿@using Smoothie.Domain.Enums
+@model Smoothie.Domain.ViewModels.Admin.EditFoodViewModel
+@{
+    ViewBag.Title = "Edit";
+
+    var dir = new DirectoryInfo(Server.MapPath("~/Pictures"));
+    var dirs = dir.GetDirectories();
+
+}
+@section js
+{
+    <script type="text/javascript">
+        $(function () {
+            $(".foodImg").click(function () {
+                //alert($(".foodImg").attr("src"));
+                $("#Food_Image").val($(this).attr("src"));
+            });
+        });
+    </script>
+}
+<div class="container">
+    <div style="text-align: right;">
+        @Html.ActionLink("Back to List", "Index")</div>
+    <fieldset>
+        <legend>@Model.Food.Shrt_Desc</legend>
+        <table>
+            <tr>
+                <td width="550">
+                    <table class="table table-bordered" style="width: 500px;">
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                                <span style="font-weight: bold; font-size: 13px; color: #eb881e;">Total</span>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                                <span style="font-weight: bold; font-size: 13px; color: #eb881e;">Total</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Calories
+                            </td>
+                            <td>@String.Format("{0:F}", Model.Food.Energ_Kcal) kcal
+                            </td>
+                            <td>
+                                Total Carbs
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Total Fat
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                                Dietary Fiber
+                            </td>
+                            <td>@String.Format("{0:F}", Model.Food.Fiber_TD) g
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Saturated
+                            </td>
+                            <td>@String.Format("{0:F}", Model.Food.FA_Sat) g
+                            </td>
+                            <td>
+                                Sugars
+                            </td>
+                            <td>@String.Format("{0:F}", Model.Food.Sugar_Tot) g
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Polyunsaturated
+                            </td>
+                            <td>@String.Format("{0:F}", Model.Food.FA_Poly) g
+                            </td>
+                            <td>
+                                Protein
+                            </td>
+                            <td>@String.Format("{0:F}", Model.Food.Protein) g
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Monounsaturated
+                            </td>
+                            <td>@String.Format("{0:F}", Model.Food.FA_Mono) g
+                            </td>
+                            <td>
+                                Caffeine
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Cholesterol
+                            </td>
+                            <td>@String.Format("{0:F}", Model.Food.Cholestrl) mg
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span style="font-weight: bold; font-size: 13px; color: #eb881e;">Minerals</span>
+                            </td>
+                            <td>
+                                <span style="font-weight: bold; font-size: 13px; color: #eb881e;">Total</span>
+                            </td>
+                            <td>
+                                <span style="font-weight: bold; font-size: 13px; color: #eb881e;">Vitamins</span>
+                            </td>
+                            <td>
+                                <span style="font-weight: bold; font-size: 13px; color: #eb881e;">Total</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Calcium
+                            </td>
+                            <td>@String.Format("{0:F}", Model.Food.Calcium) mg
+                            </td>
+                            <td>
+                                Vitamin A
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Iron
+                            </td>
+                            <td>@String.Format("{0:F}", Model.Food.Iron) mg
+                            </td>
+                            <td>
+                                Vitamin C
+                            </td>
+                            <td>@String.Format("{0:F}", Model.Food.Vit_C) mg
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Magnesium
+                            </td>
+                            <td>@String.Format("{0:F}", Model.Food.Magnesium) mg
+                            </td>
+                            <td>
+                                Vitamin D
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Phosphorus
+                            </td>
+                            <td>@String.Format("{0:F}", Model.Food.Phosphorus) mg
+                            </td>
+                            <td>
+                                Vitamin E
+                            </td>
+                            <td>@String.Format("{0:F}", Model.Food.Vit_E) mg
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Potassium
+                            </td>
+                            <td>@String.Format("{0:F}", Model.Food.Potassium) mg
+                            </td>
+                            <td>
+                                Thiamin
+                            </td>
+                            <td>@String.Format("{0:F}", Model.Food.Thiamin) mg
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Sodium
+                            </td>
+                            <td>@String.Format("{0:F}", Model.Food.Sodium) mg
+                            </td>
+                            <td>
+                                Riboflavin
+                            </td>
+                            <td>@String.Format("{0:F}", Model.Food.Riboflavin) mg
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Zinc
+                            </td>
+                            <td>@String.Format("{0:F}", Model.Food.Zinc) mg
+                            </td>
+                            <td>
+                                Niacin
+                            </td>
+                            <td>@String.Format("{0:F}", Model.Food.Niacin) mg
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                                Vitamin B<sub>6</sub>
+                            </td>
+                            <td>@String.Format("{0:F}", Model.Food.Vit_B6) mg
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                                Folate
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                                Vitamin B12
+                            </td>
+                            <td>@String.Format("{0:F}", Model.Food.Vit_B12) μg
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="50">
+                    &nbsp;
+                </td>
+                <td valign="top">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.ValidationSummary(true)
+                        @Html.AntiForgeryToken()
+
+                        @Html.HiddenFor(x => x.Food.NDB_No)
+                        @Html.HiddenFor(x => x.Food.Shrt_Desc)
+                        @Html.HiddenFor(x => x.Food.Energ_Kcal)
+                        @Html.HiddenFor(x => x.Food.Fiber_TD)
+                        @Html.HiddenFor(x => x.Food.FA_Sat)
+                        @Html.HiddenFor(x => x.Food.Sugar_Tot)
+                        @Html.HiddenFor(x => x.Food.FA_Poly)
+                        @Html.HiddenFor(x => x.Food.Protein)
+                        @Html.HiddenFor(x => x.Food.FA_Mono)
+                        @Html.HiddenFor(x => x.Food.Cholestrl)
+                        @Html.HiddenFor(x => x.Food.Calcium)
+                        @Html.HiddenFor(x => x.Food.Iron)
+                        @Html.HiddenFor(x => x.Food.Vit_C)
+                        @Html.HiddenFor(x => x.Food.Magnesium)
+                        @Html.HiddenFor(x => x.Food.Phosphorus)
+                        @Html.HiddenFor(x => x.Food.Vit_E)
+                        @Html.HiddenFor(x => x.Food.Potassium)
+                        @Html.HiddenFor(x => x.Food.Thiamin)
+                        @Html.HiddenFor(x => x.Food.Sodium)
+                        @Html.HiddenFor(x => x.Food.Riboflavin)
+                        @Html.HiddenFor(x => x.Food.Zinc)
+                        @Html.HiddenFor(x => x.Food.Niacin)
+                        @Html.HiddenFor(x => x.Food.Vit_B6)
+                        @Html.HiddenFor(x => x.Food.Vit_B12)
+                        
+                        @Html.HiddenFor(x => x.Food.GmWt_Desc1)
+                        @Html.HiddenFor(x => x.Food.GmWt_1)
+                        @Html.HiddenFor(x => x.Food.GmWt_Desc2)
+                        @Html.HiddenFor(x => x.Food.GmWt_2)
+                    
+                        
+                        <table class="" style="width: 500px; border: 0;">
+                            <tr>
+                                <td>
+                                    Name:
+                                </td>
+                                <td>
+                                    @Html.EditorFor(x => x.Food.Name) &nbsp;&nbsp;
+                                    @Html.ValidationMessageFor(x => x.Food.Name)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Category:
+                                </td>
+                                <td>
+                                    @Html.DropDownListFor(x => x.Food.GroupId, Model.Categories, "Select one") &nbsp;&nbsp;
+                                    @Html.ValidationMessageFor(x => x.Food.GroupId)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Status:
+                                </td>
+                                <td>
+                                    @Html.DropDownListFor(x => x.Food.Status, new SelectList(Model.StatusList, "Id", "Value", Model.Food.Status))
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign="top">
+                                    Size:
+                                </td>
+                                <td>
+                                    @(Model.Food.GmWt_Desc1): @(Model.Food.GmWt_1)
+                                    g<br />
+                                    @(Model.Food.GmWt_Desc2): @(Model.Food.GmWt_2)
+                                    g<br />
+                                    <br />
+                                    @Html.EditorFor(x => x.Food.BaseUnit) &nbsp;&nbsp;
+                                    @Html.ValidationMessageFor(x => x.Food.BaseUnit)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign="top">
+                                    Image:
+                                </td>
+                                <td>
+                                    @Html.EditorFor(x => x.Food.Image) &nbsp;&nbsp;
+                                    @Html.ValidationMessageFor(x => x.Food.Image)<br />
+                                    <a href="">select image</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                </td>
+                                <td>
+                                    <br />
+                                    <button type="submit" class="btn">
+                                        Edit</button>
+                                </td>
+                            </tr>
+                        </table>
+                        
+                        <br />
+                        <br />
+                        <br />
+                        
+                           
+                        
+                        <div>
+                            @foreach (var item in dirs)
+                            {
+                                <div style="border-bottom: 1px solid gray; font-weight: bold; padding: 0 0 3px 0;
+                                    margin: 0 0 7px 0;">@item.Name</div>
+                                
+                                foreach (var file in item.GetFiles("*.*", SearchOption.AllDirectories))
+                                {
+                                <img class="foodImg" src="/Pictures/@item.Name/@file.Name" alt=""/>
+                                }
+
+                            }
+                        </div>
+                    }
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+</div>

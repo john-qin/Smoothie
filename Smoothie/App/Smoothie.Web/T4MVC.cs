@@ -34,6 +34,7 @@ namespace T4MVC {
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public class AdminClass {
         public readonly string Name = "Admin";
+        public Smoothie.Web.Areas.Admin.Controllers.FoodController Food = new Smoothie.Web.Areas.Admin.Controllers.T4MVC_FoodController();
         public Smoothie.Web.Areas.Admin.Controllers.HomeController Home = new Smoothie.Web.Areas.Admin.Controllers.T4MVC_HomeController();
         public T4MVC.Admin.SharedController Shared = new T4MVC.Admin.SharedController();
     }
@@ -325,6 +326,16 @@ namespace Links {
         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
         public static readonly string jquery_showpassword_min_js = Url("jquery.showpassword.min.js");
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class PagedList {
+            private const string URLPATH = "~/Scripts/PagedList";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string PagedList_Mvc_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/PagedList.Mvc.min.js") ? Url("PagedList.Mvc.min.js") : Url("PagedList.Mvc.js");
+                          
+            public static readonly string PagedList_Mvc_Template_html = Url("PagedList.Mvc.Template.html");
+        }
+    
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -352,6 +363,7 @@ namespace Links {
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string bootstrap_min_js = Url("bootstrap.min.js");
+                public static readonly string jquery_easyui_min_js = Url("jquery.easyui.min.js");
             }
         
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -359,12 +371,35 @@ namespace Links {
                 private const string URLPATH = "~/Content/Admin/Styles";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                public static readonly string admin_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/admin.min.css") ? Url("admin.min.css") : Url("admin.css");
+                     
                 public static readonly string bootstrap_responsive_min_css = Url("bootstrap-responsive.min.css");
                 public static readonly string bootstrap_min_css = Url("bootstrap.min.css");
             }
         
         }
     
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class images {
+            private const string URLPATH = "~/Content/images";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string blender_png = Url("blender.png");
+            public static readonly string btn_add_png = Url("btn-add.png");
+            public static readonly string btn_blend_png = Url("btn-blend.png");
+            public static readonly string choice_dropdown_png = Url("choice-dropdown.png");
+            public static readonly string footer_divider_png = Url("footer-divider.png");
+            public static readonly string header_divider_png = Url("header-divider.png");
+            public static readonly string ingredient_place_holder_png = Url("ingredient-place-holder.png");
+            public static readonly string logo_png = Url("logo.png");
+            public static readonly string menu_tab_png = Url("menu-tab.png");
+            public static readonly string search_icon_png = Url("search-icon.png");
+            public static readonly string side_tab_selected_png = Url("side-tab-selected.png");
+            public static readonly string side_tab_png = Url("side-tab.png");
+        }
+    
+        public static readonly string PagedList_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/PagedList.min.css") ? Url("PagedList.min.css") : Url("PagedList.css");
+             
         public static readonly string Site_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Site.min.css") ? Url("Site.min.css") : Url("Site.css");
              
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]

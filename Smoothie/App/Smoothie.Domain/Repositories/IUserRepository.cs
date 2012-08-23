@@ -4,7 +4,7 @@ using Smoothie.Domain.ViewModels;
 
 namespace Smoothie.Domain.Repositories
 {
-    public interface IUserRepository : IRepository<User>
+    public interface IUserRepository : IRepository<User, int>
     {
         User GetUserByLogin(UserLoginViewModel userLogin, AccountType accountType);
         User GetUserByEmail(string email, AccountType accountType);

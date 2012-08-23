@@ -40,6 +40,8 @@ namespace Smoothie.Web.Infrastructure.AutoMapper
 
             CreateMap<UserDataDto, User>();
 
+            CreateMap<Food, FoodListDto>();
+
 
         }
     }

@@ -39,7 +39,7 @@ namespace Smoothie.Web.Areas.Admin.Controllers
         [GET("Index")]
         public virtual ActionResult Index()
         {
-            return View();
+            return RedirectToAction(MVC.Admin.Food.Index());
         }
 
         

@@ -1,8 +1,41 @@
-﻿@{
-    ViewBag.Title = "test";
+﻿@model Smoothie.Domain.ViewModels.MakeSmoothieViewModel
+@{
+    ViewBag.Title = "Put a straw in it";
 }
+<div id="Main">
+    <div id="MainLeft">
+        <div id="searchwrapper">
+            <form action="">
+                <input type="text" class="searchbox" name="s" value="" />
+                <input type="image" src="@Links.Content.images.search_icon_png" class="searchbox_submit"
+                       value="" />
+            </form>
+        </div>
 
-<h2>@ViewBag.Message</h2>
-<p>
-    testing <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
-</p>
+        <div id="CategoryList">
+            <ul>
+                @foreach (var item in Model.Categories)
+                {
+                    <li><a href="">@item.Name</a></li>  
+                }
+            </ul>
+        </div>
+        <div id="itemList">
+            <div id="target" style="overflow: auto; width: 350px; height: 400px; border:1px solid #d1c9c2; padding: 7px;">
+                @foreach(var item in Model.Ingredients)
+                {
+                    @item.Name<br/>
+                }
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div id="MainRight">
+        <div id="blender">
+            <img id="btnBlend" src="@Links.Content.images.btn_blend_png" alt="blend button"/>
+        </div>
+    </div>
+    <div class="clear">
+    </div>
+</div>

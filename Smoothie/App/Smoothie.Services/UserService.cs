@@ -28,7 +28,6 @@ namespace Smoothie.Services
                                        Message = "This Email already exists",
                                        Value = null
                                    };
-
             }
             else
             {
