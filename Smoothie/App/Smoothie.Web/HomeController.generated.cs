@@ -44,6 +44,11 @@ namespace Smoothie.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Summary() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Summary);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.PartialViewResult UserProfile() {
             return new T4MVC_PartialViewResult(Area, Name, ActionNames.UserProfile);
         }
@@ -63,6 +68,7 @@ namespace Smoothie.Web.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
             public readonly string Index = "Index";
+            public readonly string Summary = "Summary";
             public readonly string About = "About";
             public readonly string UserProfile = "UserProfile";
         }
@@ -70,6 +76,7 @@ namespace Smoothie.Web.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants {
             public const string Index = "Index";
+            public const string Summary = "Summary";
             public const string About = "About";
             public const string UserProfile = "UserProfile";
         }
@@ -82,6 +89,13 @@ namespace Smoothie.Web.Controllers {
         public class ActionParamsClass_Index {
             public readonly string userData = "userData";
             public readonly string category = "category";
+        }
+        static readonly ActionParamsClass_Summary s_params_Summary = new ActionParamsClass_Summary();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Summary SummaryParams { get { return s_params_Summary; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Summary {
+            public readonly string id = "id";
         }
         static readonly ActionParamsClass_UserProfile s_params_UserProfile = new ActionParamsClass_UserProfile();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -98,6 +112,7 @@ namespace Smoothie.Web.Controllers {
             public readonly string _UserProfile = "~/Views/Home/_UserProfile.cshtml";
             public readonly string About = "~/Views/Home/About.cshtml";
             public readonly string Index = "~/Views/Home/Index.cshtml";
+            public readonly string Summary = "~/Views/Home/Summary.cshtml";
         }
     }
 
@@ -109,6 +124,20 @@ namespace Smoothie.Web.Controllers {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Index);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "userData", userData);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "category", category);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Index(System.Web.Mvc.FormCollection form, Smoothie.Domain.Dto.UserDataDto userData, int category) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Index);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "form", form);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "userData", userData);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "category", category);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult Summary(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Summary);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
             return callInfo;
         }
 

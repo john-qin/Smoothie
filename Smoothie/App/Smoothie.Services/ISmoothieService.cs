@@ -11,5 +11,7 @@ namespace Smoothie.Services
     {
         IEnumerable<Category> GetCategories();
         IEnumerable<Food> GetIngredients(int category);
+        int AddSmoothie(Domain.Entities.Smoothie item);
+        void AddIngredients(string query, int smoothieId);
     }
 }

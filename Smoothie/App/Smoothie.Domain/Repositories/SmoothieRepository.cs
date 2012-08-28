@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
 using Dapper;
 using Smoothie.Domain.Entities;
+using Smoothie.Domain.Enums;
 
 namespace Smoothie.Domain.Repositories
 {
@@ -23,7 +22,7 @@ namespace Smoothie.Domain.Repositories
 
 
 
-        public Food Get(string id)
+        public Entities.Smoothie Get(string id)
         {
             throw new NotImplementedException();
         }
@@ -34,9 +33,37 @@ namespace Smoothie.Domain.Repositories
         }
 
 
-        public int Save(Food item)
+        public int Save(Entities.Smoothie item)
         {
-            throw new NotImplementedException();
+            using (var conn = OpenConnection())
+            {
+                string query = "";
+
+                if (item.UserId == 0)
+                {
+                    query = "INSERT INTO dbo.Smoothie( Name, CreatedDate, Status ) values ";
+                    query = query + " (@Name, @CreatedDate, @Status ) ";
+                }
+                else
+                {
+                    query = "INSERT INTO dbo.Smoothie( Name, CreatedDate, Status, UserId ) values ";
+                    query = query + " (@Name, @CreatedDate, @Status, @UserId) ";
+                }
+
+                var parameters = new
+                                     {
+                                         Name = item.Name,
+                                         CreatedDate = DateTime.Now,
+                                         Status = SmoothieStatus.Approved,
+                                         UserId = item.UserId
+                                     };
+
+                conn.Execute(query, parameters);
+                SetIdentity<int>(conn, id => item.Id = id);
+                return item.Id;
+
+            }
+
         }
 
 
@@ -55,5 +82,17 @@ namespace Smoothie.Domain.Repositories
                 return conn.Query<Food>(query, parameters);
             }
         }
+
+
+
+        public void AddIngredients(string query, int smoothieId)
+        {
+            using (var conn = OpenConnection())
+            {
+                conn.Execute("AddSmoothieIngredients", new { query = query, smoothieId = smoothieId }, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+
     }
 }

@@ -2,16 +2,58 @@
 @{
     ViewBag.Title = "Put a straw in it";
 }
+@section scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            $(".sourceItem").draggable({
+                helper: "clone",
+                appendTo: "body"
+            });
+
+            $("#targetBox").droppable({
+                accept: ".sourceItem",
+                hoverClass: "drop-active",
+                drop: function (event, ui) {
+                    var sourceItem = ui.draggable.html();
+                    var sourceItemImage = ui.draggable.find('img').attr('src');
+                    var sourceItemName = ui.draggable.find('a').attr('title');
+                    var sourceItemId = ui.draggable.attr("id");
+
+                    var exist = $("#targetBox").find("." + sourceItemName).val();
+                    if (exist) {
+                        $("#targetBox").find("." + sourceItemName).val(parseInt(exist) + 1);
+                    } else {
+                        var sourceHtml = '<div class="targetItem">';
+                        sourceHtml = sourceHtml + '<img class="targetItemImage" src="' + sourceItemImage + '" alt="' + sourceItemName + '"/></a><br />';
+                        sourceHtml = sourceHtml + sourceItemName;
+                        sourceHtml = sourceHtml + '<div>Qty:  <input type="text" name="qty" class="qty ' + sourceItemName + '" value="1" /> <a  onclick="remove(this)" class="delete">Delete</a></div>';
+                        sourceHtml = sourceHtml + '<input type="hidden" name="targetName" value="' + sourceItemId + '">';
+                        sourceHtml = sourceHtml + '</div>';
+
+                        $("#targetBox").append(sourceHtml);
+                    }
+                }
+            });
+
+        });
+
+
+        function remove(el) {
+            $(el).parent().parent().remove();
+        }
+        
+    </script>
+}
 <div id="Main">
     <div id="MainLeft">
         <div id="searchwrapper">
             <form action="">
-                <input type="text" class="searchbox" name="s" value="" />
-                <input type="image" src="@Links.Content.images.search_icon_png" class="searchbox_submit"
+            <input type="text" class="searchbox" name="s" value="" />
+            <input type="image" src="@Links.Content.images.search_icon_png" class="searchbox_submit"
                        value="" />
             </form>
         </div>
-
         <div id="CategoryList">
             <ul>
                 @foreach (var item in Model.Categories)
@@ -20,11 +62,15 @@
                 }
             </ul>
         </div>
-        <div id="itemList">
-            <div id="target" style="overflow: auto; width: 350px; height: 400px; border:1px solid #d1c9c2; padding: 7px;">
-                @foreach(var item in Model.Ingredients)
+        <div id="sourceBox" class="clearfix">
+            <div class="inner">
+                @foreach (var item in Model.Ingredients)
                 {
-                    @item.Name<br/>
+                    <div class="sourceItem" id="@item.NDB_No">
+                        <img src="@item.Image" alt="@item.Name.Replace(" ", "_")"/><br />
+                        <a href="#" title="@item.Name.Replace(" ", "_")">@item.Name</a>
+                    </div>
+                   
                 }
             </div>
         </div>
@@ -32,9 +78,17 @@
         </div>
     </div>
     <div id="MainRight">
-        <div id="blender">
-            <img id="btnBlend" src="@Links.Content.images.btn_blend_png" alt="blend button"/>
-        </div>
+        
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)
+            @Html.AntiForgeryToken()
+            <div id="blender">
+                <div id="targetBox" class="clearfix">
+                </div>
+                <input id="btnBlend"  type="image" src="@Links.Content.images.btn_blend_png" name="image" width="137" height="33">
+            </div>
+        }
     </div>
     <div class="clear">
     </div>

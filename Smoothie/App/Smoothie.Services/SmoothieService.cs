@@ -25,5 +25,17 @@ namespace Smoothie.Services
         {
             return _smoothieRepository.GetIngredients(category);
         }
+
+
+        public int AddSmoothie(Domain.Entities.Smoothie item)
+        {
+            return _smoothieRepository.Save(item);
+        }
+
+
+        public void AddIngredients(string query, int smoothieId)
+        {
+            _smoothieRepository.AddIngredients(query, smoothieId);
+        }
     }
 }

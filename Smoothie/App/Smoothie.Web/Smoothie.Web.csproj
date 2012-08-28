@@ -248,6 +248,7 @@
     <Content Include="Views\Shared\LoginPartial.cshtml" />
     <Content Include="Views\Home\_UserProfile.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\BootstrapPagination.cshtml" />
+    <Content Include="Views\Home\Summary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
