@@ -1,13 +1,12 @@
-﻿using System.Collections.Generic;
-using Smoothie.Domain.Dto;
-
-namespace Smoothie.Domain.ViewModels
+﻿
+namespace Smoothie.Domain.Dto
 {
-    public class SmoothieSummaryViewModel
+    public class SmoothieIngredientsDto
     {
-        public IEnumerable<SmoothieIngredientsDto> Ingredients { get; set; }
-
         public int SmoothieId { get; set; }
+        public int Quantity { get; set; }
+        public string NDB_No { get; set; }
+
 
         public double Calories { get; set; }
         public double TotalFat { get; set; }
@@ -40,6 +39,11 @@ namespace Smoothie.Domain.ViewModels
         public double Folate { get; set; }
         public double VitaminB12 { get; set; }
 
+        public string Name { get; set; }
+        public string Image { get; set; }
+
+        public double GmWt_3 { get; set; }
+        public string GmWt_Desc3 { get; set; }
 
     }
 }

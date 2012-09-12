@@ -1,0 +1,9 @@
+﻿@model IEnumerable<Smoothie.Domain.Entities.Food>
+@foreach (var item in Model)
+{
+    <div class="sourceItem" id="@item.NDB_No">
+        <img src="@item.Image" alt="@item.Name.Replace(" ", "_")"/><br />
+        <a href="#" title="@item.Name.Replace(" ", "_")">@item.Name</a>
+    </div>
+                   
+}

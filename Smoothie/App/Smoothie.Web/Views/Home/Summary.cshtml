@@ -1,1 +1,245 @@
-﻿this is partial view
+﻿@model Smoothie.Domain.ViewModels.MakeSmoothieViewModel
+@foreach (var item in Model.Ingredients)
+{
+    <div class="targetItem">
+        <img class="targetItemImage" src="@item.Image" alt="@item.Name"/><br />
+        @item.Name
+        <div>
+            Qty:
+            <input type="text" name="qty" class="qty" value="@item.Quantity" />
+        </div>
+    </div> 
+}
+<script>
+
+
+
+    function ShowSourceLis(smoothieId) {
+        $("#smoothieId").val(smoothieId);
+        $("#smoothieBox").show();
+        $("#summaryBox").hide();
+    }
+</script>
+<img src="@Links.Content.images.btn_blend_png" style="cursor: pointer;" onclick="ShowSourceLis(@Model.SmoothieId)"/>
+<div class="clear">
+</div>
+<table class="table table-bordered" style="width: 355px;">
+    <tr>
+        <td>
+        </td>
+        <td>
+            <span style="font-weight: bold; font-size: 13px; color: #eb881e;">Total</span>
+        </td>
+        <td>
+        </td>
+        <td>
+            <span style="font-weight: bold; font-size: 13px; color: #eb881e;">Total</span>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Calories
+        </td>
+        <td>@String.Format("{0:F}", Model.Calories) kcal
+        </td>
+        <td>
+            Total Carbs
+        </td>
+        <td>
+            @String.Format("{0:F}", Model.TotalCarbs) kcal
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Total Fat
+        </td>
+        <td>
+            @String.Format("{0:F}", Model.TotalFat) g
+        </td>
+        <td>
+            Dietary Fiber
+        </td>
+        <td>@String.Format("{0:F}", Model.DietaryFiber) g
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Saturated
+        </td>
+        <td>@String.Format("{0:F}", Model.Saturated) g
+        </td>
+        <td>
+            Sugars
+        </td>
+        <td>@String.Format("{0:F}", Model.Sugars) g
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Polyunsaturated
+        </td>
+        <td>@String.Format("{0:F}", Model.Polyunsaturated) g
+        </td>
+        <td>
+            Protein
+        </td>
+        <td>@String.Format("{0:F}", Model.Protein) g
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Monounsaturated
+        </td>
+        <td>@String.Format("{0:F}", Model.Monounsaturated) g
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Cholesterol
+        </td>
+        <td>@String.Format("{0:F}", Model.Cholesterol) mg
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span style="font-weight: bold; font-size: 13px; color: #eb881e;">Minerals</span>
+        </td>
+        <td>
+            <span style="font-weight: bold; font-size: 13px; color: #eb881e;">Total</span>
+        </td>
+        <td>
+            <span style="font-weight: bold; font-size: 13px; color: #eb881e;">Vitamins</span>
+        </td>
+        <td>
+            <span style="font-weight: bold; font-size: 13px; color: #eb881e;">Total</span>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Calcium
+        </td>
+        <td>@String.Format("{0:F}", Model.Calcium) mg
+        </td>
+        <td>
+            Vitamin A
+        </td>
+        <td>
+            @String.Format("{0:F}", Model.VitaminA) IU
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Iron
+        </td>
+        <td>@String.Format("{0:F}", Model.Iron) mg
+        </td>
+        <td>
+            Vitamin C
+        </td>
+        <td>@String.Format("{0:F}", Model.VitaminC) mg
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Magnesium
+        </td>
+        <td>@String.Format("{0:F}", Model.Magnesium) mg
+        </td>
+        <td>
+            Vitamin D
+        </td>
+        <td>
+            @String.Format("{0:F}", Model.VitaminD) IU
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Phosphorus
+        </td>
+        <td>@String.Format("{0:F}", Model.Phosphorus) mg
+        </td>
+        <td>
+            Vitamin E
+        </td>
+        <td>@String.Format("{0:F}", Model.VitaminE) mg
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Potassium
+        </td>
+        <td>@String.Format("{0:F}", Model.Potassium) mg
+        </td>
+        <td>
+            Thiamin
+        </td>
+        <td>@String.Format("{0:F}", Model.Thiamin) mg
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Sodium
+        </td>
+        <td>@String.Format("{0:F}", Model.Sodium) mg
+        </td>
+        <td>
+            Riboflavin
+        </td>
+        <td>@String.Format("{0:F}", Model.Riboflavin) mg
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Zinc
+        </td>
+        <td>@String.Format("{0:F}", Model.Zinc) mg
+        </td>
+        <td>
+            Niacin
+        </td>
+        <td>@String.Format("{0:F}", Model.Niacin) mg
+        </td>
+    </tr>
+    <tr>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+            Vitamin B<sub>6</sub>
+        </td>
+        <td>@String.Format("{0:F}", Model.VitaminB6) mg
+        </td>
+    </tr>
+    <tr>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+            Folate
+        </td>
+        <td>
+            @String.Format("{0:F}", Model.Folate) μg
+        </td>
+    </tr>
+    <tr>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+            Vitamin B12
+        </td>
+        <td>@String.Format("{0:F}", Model.VitaminB12) μg
+        </td>
+    </tr>
+</table>

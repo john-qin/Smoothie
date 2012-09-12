@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Smoothie.Domain.Dto.SmoothieIngredientsDto>
+           
+
+@using (Ajax.BeginForm("Summary", "Home", new AjaxOptions
+{
+    UpdateTargetId = "smoothieBox",
+    OnSuccess = "OnSuccess"
+}))
+{
+    @Html.ValidationSummary(true)
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(x => x.First().SmoothieId)
+                
+    <div id="blender">
+        <div id="targetBox" class="clearfix">
+            @foreach (var item in Model)
+            {
+                
+                <div class="targetItem">
+                    <img class="targetItemImage" src="@item.Image" alt="@item.Name"/><br />
+                    @item.Name
+                    <div>
+                        Qty:
+                        <input type="text" name="qty" class="qty @item.Name" value="@item.Quantity" />
+                        <a onclick="remove(this)" class="delete">Delete</a></div>
+                    <input type="hidden" name="targetName" value="@item.NDB_No" />
+                </div>
+            }
+        </div>
+        <input id="btnBlend"  type="image" src="@Links.Content.images.btn_blend_png" name="image" width="137" height="33" />
+    </div>
+            
+}
+
+

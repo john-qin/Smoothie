@@ -60,5 +60,8 @@
         public string Name { get; set; }
         public string Image { get; set; }
         public int BaseUnit { get; set; }
+
+        public double GmWt_3 { get; set; }
+        public string GmWt_Desc3 { get; set; }
     }
 }

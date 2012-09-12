@@ -54,6 +54,7 @@
     <Compile Include="Dto\FoodPagination.cs" />
     <Compile Include="Dto\PageListDto.cs" />
     <Compile Include="Dto\PagingDto.cs" />
+    <Compile Include="Dto\SmoothieIngredientsDto.cs" />
     <Compile Include="Dto\TwitterDto.cs" />
     <Compile Include="Dto\UserDataDto.cs" />
     <Compile Include="Entities\Food.cs" />

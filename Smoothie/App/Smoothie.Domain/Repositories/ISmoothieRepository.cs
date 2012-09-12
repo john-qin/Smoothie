@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Smoothie.Domain.Dto;
 using Smoothie.Domain.Entities;
 
 namespace Smoothie.Domain.Repositories
@@ -7,6 +9,8 @@ namespace Smoothie.Domain.Repositories
     {
         IEnumerable<Category> GetCategories();
         IEnumerable<Food> GetIngredients(int category);
-        void AddIngredients(string query, int smoothieId);
+        IEnumerable<Food> GetIngredients(string term);
+        int AddIngredients(string query, int smoothieId, DateTime createdDate, int status, int userId);
+        IEnumerable<SmoothieIngredientsDto> GetSmoothieIngredients(int id);
     }
 }

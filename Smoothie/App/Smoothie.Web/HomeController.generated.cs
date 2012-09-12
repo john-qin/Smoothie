@@ -49,8 +49,23 @@ namespace Smoothie.Web.Controllers {
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult Blender() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Blender);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.PartialViewResult UserProfile() {
             return new T4MVC_PartialViewResult(Area, Name, ActionNames.UserProfile);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult GetCategory() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.GetCategory);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.JsonResult SearchIngredients() {
+            return new T4MVC_JsonResult(Area, Name, ActionNames.SearchIngredients);
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -69,16 +84,22 @@ namespace Smoothie.Web.Controllers {
         public class ActionNamesClass {
             public readonly string Index = "Index";
             public readonly string Summary = "Summary";
+            public readonly string Blender = "Blender";
             public readonly string About = "About";
             public readonly string UserProfile = "UserProfile";
+            public readonly string GetCategory = "GetCategory";
+            public readonly string SearchIngredients = "SearchIngredients";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants {
             public const string Index = "Index";
             public const string Summary = "Summary";
+            public const string Blender = "Blender";
             public const string About = "About";
             public const string UserProfile = "UserProfile";
+            public const string GetCategory = "GetCategory";
+            public const string SearchIngredients = "SearchIngredients";
         }
 
 
@@ -95,7 +116,17 @@ namespace Smoothie.Web.Controllers {
         public ActionParamsClass_Summary SummaryParams { get { return s_params_Summary; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_Summary {
-            public readonly string id = "id";
+            public readonly string form = "form";
+            public readonly string userData = "userData";
+            public readonly string smoothieId = "smoothieId";
+            public readonly string category = "category";
+        }
+        static readonly ActionParamsClass_Blender s_params_Blender = new ActionParamsClass_Blender();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Blender BlenderParams { get { return s_params_Blender; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Blender {
+            public readonly string smoothieId = "smoothieId";
         }
         static readonly ActionParamsClass_UserProfile s_params_UserProfile = new ActionParamsClass_UserProfile();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -104,6 +135,20 @@ namespace Smoothie.Web.Controllers {
         public class ActionParamsClass_UserProfile {
             public readonly string userData = "userData";
         }
+        static readonly ActionParamsClass_GetCategory s_params_GetCategory = new ActionParamsClass_GetCategory();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_GetCategory GetCategoryParams { get { return s_params_GetCategory; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_GetCategory {
+            public readonly string id = "id";
+        }
+        static readonly ActionParamsClass_SearchIngredients s_params_SearchIngredients = new ActionParamsClass_SearchIngredients();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_SearchIngredients SearchIngredientsParams { get { return s_params_SearchIngredients; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_SearchIngredients {
+            public readonly string term = "term";
+        }
         static readonly ViewNames s_views = new ViewNames();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewNames Views { get { return s_views; } }
@@ -111,6 +156,8 @@ namespace Smoothie.Web.Controllers {
         public class ViewNames {
             public readonly string _UserProfile = "~/Views/Home/_UserProfile.cshtml";
             public readonly string About = "~/Views/Home/About.cshtml";
+            public readonly string Blender = "~/Views/Home/Blender.cshtml";
+            public readonly string GetCategory = "~/Views/Home/GetCategory.cshtml";
             public readonly string Index = "~/Views/Home/Index.cshtml";
             public readonly string Summary = "~/Views/Home/Summary.cshtml";
         }
@@ -127,17 +174,18 @@ namespace Smoothie.Web.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Index(System.Web.Mvc.FormCollection form, Smoothie.Domain.Dto.UserDataDto userData, int category) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Index);
+        public override System.Web.Mvc.ActionResult Summary(System.Web.Mvc.FormCollection form, Smoothie.Domain.Dto.UserDataDto userData, int smoothieId, int category) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Summary);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "form", form);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "userData", userData);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "smoothieId", smoothieId);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "category", category);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Summary(int id) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Summary);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+        public override System.Web.Mvc.ActionResult Blender(int smoothieId) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Blender);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "smoothieId", smoothieId);
             return callInfo;
         }
 
@@ -149,6 +197,18 @@ namespace Smoothie.Web.Controllers {
         public override System.Web.Mvc.PartialViewResult UserProfile(Smoothie.Domain.Dto.UserDataDto userData) {
             var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.UserProfile);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "userData", userData);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ActionResult GetCategory(int id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.GetCategory);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.JsonResult SearchIngredients(string term) {
+            var callInfo = new T4MVC_JsonResult(Area, Name, ActionNames.SearchIngredients);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "term", term);
             return callInfo;
         }
 

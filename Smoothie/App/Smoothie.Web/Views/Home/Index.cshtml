@@ -6,16 +6,54 @@
 {
     <script type="text/javascript">
         $(function () {
-            $(".sourceItem").draggable({
+            $("#summaryBox").hide();
+            BindDrag();
+            BindDrop();
+
+            $("#searchbox").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/Home/SearchIngredients",
+                        dataType: 'json',
+                        data: request,
+                        success: function (data) {
+                            response(data.map(function (value) {
+                                return {
+                                    'label': value.Value,
+                                    'value': value.Value
+                                };
+                            }));
+                        }
+                    });
+                }, 
+                minLength: 2
+
+            });
+        });
+
+        function OnSuccess() {
+            $("#smoothieBox").hide();
+            $("#summaryBox").show();
+        }
+
+        function ReBindDrag() {
+            BindDrag();
+        }
+
+        function BindDrag() {
+            $(".sourceItem").unbind("draggable").draggable({
                 helper: "clone",
                 appendTo: "body"
             });
+        }
+
+        function BindDrop() {
 
             $("#targetBox").droppable({
                 accept: ".sourceItem",
                 hoverClass: "drop-active",
                 drop: function (event, ui) {
-                    var sourceItem = ui.draggable.html();
+                    //var sourceItem = ui.draggable.html();
                     var sourceItemImage = ui.draggable.find('img').attr('src');
                     var sourceItemName = ui.draggable.find('a').attr('title');
                     var sourceItemId = ui.draggable.attr("id");
@@ -25,7 +63,7 @@
                         $("#targetBox").find("." + sourceItemName).val(parseInt(exist) + 1);
                     } else {
                         var sourceHtml = '<div class="targetItem">';
-                        sourceHtml = sourceHtml + '<img class="targetItemImage" src="' + sourceItemImage + '" alt="' + sourceItemName + '"/></a><br />';
+                        sourceHtml = sourceHtml + '<img class="targetItemImage" src="' + sourceItemImage + '" alt="' + sourceItemName + '"/><br />';
                         sourceHtml = sourceHtml + sourceItemName;
                         sourceHtml = sourceHtml + '<div>Qty:  <input type="text" name="qty" class="qty ' + sourceItemName + '" value="1" /> <a  onclick="remove(this)" class="delete">Delete</a></div>';
                         sourceHtml = sourceHtml + '<input type="hidden" name="targetName" value="' + sourceItemId + '">';
@@ -35,13 +73,15 @@
                     }
                 }
             });
-
-        });
+        }
 
 
         function remove(el) {
             $(el).parent().parent().remove();
         }
+
+
+
         
     </script>
 }
@@ -49,7 +89,7 @@
     <div id="MainLeft">
         <div id="searchwrapper">
             <form action="">
-            <input type="text" class="searchbox" name="s" value="" />
+            <input type="text" class="searchbox" Id="searchbox" name="s" value="" />
             <input type="image" src="@Links.Content.images.search_icon_png" class="searchbox_submit"
                        value="" />
             </form>
@@ -58,12 +98,12 @@
             <ul>
                 @foreach (var item in Model.Categories)
                 {
-                    <li><a href="">@item.Name</a></li>  
+                    <li>@Ajax.ActionLink(item.Name, "GetCategory", "Home",new { id = item.Id }, new AjaxOptions { UpdateTargetId = "sourceBoxInner", InsertionMode = InsertionMode.Replace, OnSuccess = "ReBindDrag"})</li>  
                 }
             </ul>
         </div>
         <div id="sourceBox" class="clearfix">
-            <div class="inner">
+            <div class="inner" id="sourceBoxInner">
                 @foreach (var item in Model.Ingredients)
                 {
                     <div class="sourceItem" id="@item.NDB_No">
@@ -78,18 +118,25 @@
         </div>
     </div>
     <div id="MainRight">
+        <div id="smoothieBox">
+            @using (Ajax.BeginForm("Summary", "Home", new AjaxOptions { UpdateTargetId = "summaryBox", OnSuccess = "OnSuccess" }))
+            {
+                @Html.ValidationSummary(true)
+                @Html.AntiForgeryToken()
+                @Html.Hidden("smoothieId", 0)
+                <div id="blender">
+                    <div id="targetBox" class="clearfix">
+                    </div>
+                    <input id="btnBlend"  type="image" src="@Links.Content.images.btn_blend_png" name="image" />
+                </div>           
+            }
+        </div>
         
-        @using (Html.BeginForm())
-        {
-            @Html.ValidationSummary(true)
-            @Html.AntiForgeryToken()
-            <div id="blender">
-                <div id="targetBox" class="clearfix">
-                </div>
-                <input id="btnBlend"  type="image" src="@Links.Content.images.btn_blend_png" name="image" width="137" height="33">
+        <div id="summaryBox">
+            
             </div>
-        }
-    </div>
+
+        </div>
     <div class="clear">
     </div>
 </div>

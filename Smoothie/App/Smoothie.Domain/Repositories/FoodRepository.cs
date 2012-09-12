@@ -132,7 +132,7 @@ namespace Smoothie.Domain.Repositories
             using (IDbConnection conn = OpenConnection())
             {
                 const string query = "UPDATE dbo.[FoodAbbrev]" +
-                                    " SET GroupId = @GroupId, Status = @Status, Name = @Name, Image = @Image, BaseUnit = @BaseUnit " +
+                                    " SET GroupId = @GroupId, Status = @Status, Name = @Name, Image = @Image, GmWt_3 = @GmWt_3, GmWt_Desc3 = @GmWt_Desc3 " +
                                     " WHERE NDB_No = @NDB_No";
 
                 var parameters = new
@@ -141,7 +141,8 @@ namespace Smoothie.Domain.Repositories
                     Status = food.Status,
                     Name = food.Name,
                     Image = food.Image,
-                    BaseUnit = food.BaseUnit,
+                    GmWt_3 = food.GmWt_3,
+                    GmWt_Desc3 = food.GmWt_Desc3,
                     NDB_No = food.NDB_No
                 };
                 conn.Execute(query, parameters);

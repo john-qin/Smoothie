@@ -113,9 +113,14 @@ namespace Smoothie.Web.Areas.Admin.Controllers
                 ModelState.AddModelError("Food.GroupId", "Select a category");
             }
 
-            if(model.Food.BaseUnit != 1 && model.Food.BaseUnit != 2)
+            if (model.Food.GmWt_3 < 0)
             {
-                ModelState.AddModelError("Food.BaseUnit", "Size has invalid input");
+                ModelState.AddModelError("Food.GmWt_3", "Required field");
+            }
+
+            if (string.IsNullOrWhiteSpace(model.Food.GmWt_Desc3))
+            {
+                ModelState.AddModelError("Food.GmWt_Desc3", "Required field");
             }
 
             if(ModelState.IsValid)

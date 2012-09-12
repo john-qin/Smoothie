@@ -94,7 +94,6 @@
                             <td>@String.Format("{0:F}", Model.Food.FA_Mono) g
                             </td>
                             <td>
-                                Caffeine
                             </td>
                             <td>
                             </td>
@@ -320,8 +319,10 @@
                                     @(Model.Food.GmWt_Desc2): @(Model.Food.GmWt_2)
                                     g<br />
                                     <br />
-                                    @Html.EditorFor(x => x.Food.BaseUnit) &nbsp;&nbsp;
-                                    @Html.ValidationMessageFor(x => x.Food.BaseUnit)
+                                    @Html.EditorFor(x => x.Food.GmWt_Desc3) &nbsp;&nbsp;
+                                    @Html.ValidationMessageFor(x => x.Food.GmWt_Desc3)
+                                    @Html.EditorFor(x => x.Food.GmWt_3) &nbsp;&nbsp;
+                                    @Html.ValidationMessageFor(x => x.Food.GmWt_3)<br />
                                 </td>
                             </tr>
                             <tr>

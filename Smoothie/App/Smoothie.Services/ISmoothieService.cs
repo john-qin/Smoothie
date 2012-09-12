@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Smoothie.Domain.Dto;
 using Smoothie.Domain.Entities;
+using Smoothie.Domain.ViewModels;
 
 namespace Smoothie.Services
 {
@@ -12,6 +13,9 @@ namespace Smoothie.Services
         IEnumerable<Category> GetCategories();
         IEnumerable<Food> GetIngredients(int category);
         int AddSmoothie(Domain.Entities.Smoothie item);
-        void AddIngredients(string query, int smoothieId);
+        int AddIngredients(string query, int smoothieId, DateTime createdDate, int status, int userId);
+        SmoothieSummaryViewModel GetSmoothieSummary(int id);
+        IEnumerable<SmoothieIngredientsDto> GetSmoothieIngredients(int id);
+        IEnumerable<Food> GetIngredients(string term);
     }
 }
