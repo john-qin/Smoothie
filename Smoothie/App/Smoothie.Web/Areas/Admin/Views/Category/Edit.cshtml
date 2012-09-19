@@ -1,0 +1,39 @@
+﻿@model Smoothie.Domain.ViewModels.Admin.EditCategoryViewModel
+@{
+    ViewBag.Title = "Edit";
+}
+<div class="container">
+    @using (Html.BeginForm(MVC.Admin.Category.Edit()))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <fieldset>
+            <legend>Category</legend>
+            @Html.HiddenFor(model => model.Category.Id)
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Category.Name)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Category.Name)
+                @Html.ValidationMessageFor(model => model.Category.Name)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Category.ReOrder)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Category.ReOrder)
+                @Html.ValidationMessageFor(model => model.Category.ReOrder)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Category.Status)
+            </div>
+            <div class="editor-field">
+                @Html.DropDownListFor(x => x.Category.Status, new SelectList(Model.StatusList, "Id", "Value", Model.Category.Status))
+                @Html.ValidationMessageFor(model => model.Category.Status)
+            </div>
+            <p>
+                <input type="submit" value="Save" />
+            </p>
+        </fieldset>
+    }
+</div>

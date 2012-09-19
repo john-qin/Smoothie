@@ -67,16 +67,18 @@ namespace Smoothie.Web.Controllers
                 }
             }
 
-            var categories = _smoothieService.GetCategories();
-            var ingredients = _smoothieService.GetIngredients(category);
+            return PartialView("EmptySummary");
 
-            var model = new MakeSmoothieViewModel
-            {
-                Categories = categories,
-                Ingredients = ingredients
-            };
+            //var categories = _smoothieService.GetCategories();
+            //var ingredients = _smoothieService.GetIngredients(category);
 
-            return View(model);
+            //var model = new MakeSmoothieViewModel
+            //{
+            //    Categories = categories,
+            //    Ingredients = ingredients
+            //};
+
+            //return View(model);
 
         }
 

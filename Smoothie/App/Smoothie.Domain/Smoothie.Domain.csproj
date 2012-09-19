@@ -71,7 +71,9 @@
     <Compile Include="Enums\Status.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
+    <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\FoodRepository.cs" />
+    <Compile Include="Repositories\ICategoryRepository.cs" />
     <Compile Include="Repositories\IFoodRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\ISmoothieRepository.cs" />
@@ -79,6 +81,7 @@
     <Compile Include="Repositories\SmoothieRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="ViewModels\Admin\AdminFoodViewModel.cs" />
+    <Compile Include="ViewModels\Admin\EditCategoryViewModel.cs" />
     <Compile Include="ViewModels\Admin\EditFoodViewModel.cs" />
     <Compile Include="ViewModels\MakeSmoothieViewModel.cs" />
     <Compile Include="ViewModels\SmoothieSummaryViewModel.cs" />

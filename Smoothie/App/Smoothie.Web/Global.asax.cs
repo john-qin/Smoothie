@@ -60,10 +60,12 @@ namespace Smoothie.Web
             builder.RegisterType<UserRepository>().As<IUserRepository>();
             builder.RegisterType<FoodRepository>().As<IFoodRepository>();
             builder.RegisterType<SmoothieRepository>().As<ISmoothieRepository>();
+            builder.RegisterType<CategoryRepository>().As<ICategoryRepository>();
 
             builder.RegisterType<UserService>().As<IUserService>();
             builder.RegisterType<FoodService>().As<IFoodService>();
-            builder.RegisterType<SmoothieService>().As<ISmoothieService>(); 
+            builder.RegisterType<SmoothieService>().As<ISmoothieService>();
+            builder.RegisterType<CategoryService>().As<ICategoryService>(); 
 
             builder.RegisterType<MappingService>().As<IMappingService>();
             builder.RegisterType<FormsAuthenticationService>().As<IAuthenticationService>();

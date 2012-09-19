@@ -1,6 +1,8 @@
 ﻿@model Smoothie.Domain.ViewModels.MakeSmoothieViewModel
 @{
     ViewBag.Title = "Put a straw in it";
+
+    var i = 1;
 }
 @section scripts
 {
@@ -25,7 +27,7 @@
                             }));
                         }
                     });
-                }, 
+                },
                 minLength: 2
 
             });
@@ -58,14 +60,14 @@
                     var sourceItemName = ui.draggable.find('a').attr('title');
                     var sourceItemId = ui.draggable.attr("id");
 
-                    var exist = $("#targetBox").find("." + sourceItemName).val();
+                    var exist = $("#targetBox").find("." + sourceItemId).val();
                     if (exist) {
-                        $("#targetBox").find("." + sourceItemName).val(parseInt(exist) + 1);
+                        $("#targetBox").find("." + sourceItemId).val(parseInt(exist) + 1);
                     } else {
                         var sourceHtml = '<div class="targetItem">';
-                        sourceHtml = sourceHtml + '<img class="targetItemImage" src="' + sourceItemImage + '" alt="' + sourceItemName + '"/><br />';
+                        sourceHtml = sourceHtml + '<img class="targetItemImage" src="' + sourceItemImage + '" alt=""/><br />';
                         sourceHtml = sourceHtml + sourceItemName;
-                        sourceHtml = sourceHtml + '<div>Qty:  <input type="text" name="qty" class="qty ' + sourceItemName + '" value="1" /> <a  onclick="remove(this)" class="delete">Delete</a></div>';
+                        sourceHtml = sourceHtml + '<div>Qty:  <input type="text" name="qty" class="qty ' + sourceItemId + '" value="1" /> <a  onclick="remove(this)" class="delete">Delete</a></div>';
                         sourceHtml = sourceHtml + '<input type="hidden" name="targetName" value="' + sourceItemId + '">';
                         sourceHtml = sourceHtml + '</div>';
 
@@ -89,7 +91,7 @@
     <div id="MainLeft">
         <div id="searchwrapper">
             <form action="">
-            <input type="text" class="searchbox" Id="searchbox" name="s" value="" />
+            <input type="text" class="searchbox" id="searchbox" name="s" value="" />
             <input type="image" src="@Links.Content.images.search_icon_png" class="searchbox_submit"
                        value="" />
             </form>
@@ -98,7 +100,10 @@
             <ul>
                 @foreach (var item in Model.Categories)
                 {
-                    <li>@Ajax.ActionLink(item.Name, "GetCategory", "Home",new { id = item.Id }, new AjaxOptions { UpdateTargetId = "sourceBoxInner", InsertionMode = InsertionMode.Replace, OnSuccess = "ReBindDrag"})</li>  
+            
+                    <li>
+                        @Ajax.ActionLink(item.Name, "GetCategory", "Home", new { id = item.Id }, new AjaxOptions { UpdateTargetId = "sourceBoxInner", InsertionMode = InsertionMode.Replace, OnSuccess = "ReBindDrag" })
+                    </li>  
                 }
             </ul>
         </div>
@@ -106,9 +111,14 @@
             <div class="inner" id="sourceBoxInner">
                 @foreach (var item in Model.Ingredients)
                 {
+                    if(i % 4 == 0)
+                    {
+                        <br class="clear"/>
+                    }
+
                     <div class="sourceItem" id="@item.NDB_No">
-                        <img src="@item.Image" alt="@item.Name.Replace(" ", "_")"/><br />
-                        <a href="#" title="@item.Name.Replace(" ", "_")">@item.Name</a>
+                        <img src="@item.Image" alt="@item.Name"/><br />
+                        <a href="#" title="@item.Name">@item.Name</a>
                     </div>
                    
                 }
@@ -131,12 +141,9 @@
                 </div>           
             }
         </div>
-        
         <div id="summaryBox">
-            
-            </div>
-
         </div>
+    </div>
     <div class="clear">
     </div>
 </div>

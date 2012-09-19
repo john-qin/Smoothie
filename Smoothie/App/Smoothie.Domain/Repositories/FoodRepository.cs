@@ -13,28 +13,27 @@ namespace Smoothie.Domain.Repositories
     {
         public IEnumerable<Food> GetFoodList(string group, int page, int status = 0, int itemPerPage = 25)
         {
-            using (IDbConnection conn = OpenConnection())
+            using (var conn = OpenConnection())
             {
-                var query = new StringBuilder();
-                query.Append("SELECT  * ");
-                query.Append("FROM    ( SELECT    tbl.* , ");
-                query.Append("                    ROW_NUMBER() OVER ( ORDER BY tbl.NDB_No ) rownum ");
-                query.Append("          FROM      dbo.FoodAbbrev AS tbl ");
-                if (status > 0)
-                    query.Append("      WHERE Status = @Status");
-                if (!string.IsNullOrWhiteSpace(group))
-                {
-                    if (status > 0)
-                        query.Append(" AND ");
-                    else
-                        query.Append(" WHERE ");
-                    query.Append("               GroupCd = @groupId ");
-                }
+                //var query = new StringBuilder();
+                //query.Append("SELECT  * ");
+                //query.Append("FROM    ( SELECT    tbl.* , ");
+                //query.Append("                    ROW_NUMBER() OVER ( ORDER BY tbl.NDB_No ) rownum ");
+                //query.Append("          FROM      dbo.FoodAbbrev AS tbl ");
+                //if (status > 0)
+                //    query.Append("      WHERE Status = @Status");
+                //if (!string.IsNullOrWhiteSpace(group))
+                //{
+                //    if (status > 0)
+                //        query.Append(" AND ");
+                //    else
+                //        query.Append(" WHERE ");
+                //    query.Append("               GroupCd = @groupId ");
+                //}
              
-                query.Append("        ) seq ");
-                query.Append("WHERE   seq.rownum BETWEEN @x AND @y ");
-                query.Append("ORDER BY seq.rownum ");
-
+                //query.Append("        ) seq ");
+                //query.Append("WHERE   seq.rownum BETWEEN @x AND @y ");
+                //query.Append("ORDER BY seq.rownum ");
 
                 var parameters = new
                                  {
@@ -44,7 +43,7 @@ namespace Smoothie.Domain.Repositories
                                      y = page * itemPerPage
                                  };
 
-                return conn.Query<Food>(query.ToString(), parameters);
+                return conn.Query<Food>("GetFoodList", parameters, commandType: CommandType.StoredProcedure);
             }
         }
 
@@ -121,7 +120,7 @@ namespace Smoothie.Domain.Repositories
             using (IDbConnection conn = OpenConnection())
             {
                 const string query = "SELECT [Id],[Name],[ReOrder] " +
-                                     "FROM [Smoothie].[dbo].[Category] ";
+                                     "FROM [Smoothie].[dbo].[Category] Where status = 3";
                 return conn.Query<Category>(query);
             }
         }

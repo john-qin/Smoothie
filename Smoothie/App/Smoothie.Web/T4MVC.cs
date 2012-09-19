@@ -34,6 +34,7 @@ namespace T4MVC {
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public class AdminClass {
         public readonly string Name = "Admin";
+        public Smoothie.Web.Areas.Admin.Controllers.CategoryController Category = new Smoothie.Web.Areas.Admin.Controllers.T4MVC_CategoryController();
         public Smoothie.Web.Areas.Admin.Controllers.FoodController Food = new Smoothie.Web.Areas.Admin.Controllers.T4MVC_FoodController();
         public Smoothie.Web.Areas.Admin.Controllers.HomeController Home = new Smoothie.Web.Areas.Admin.Controllers.T4MVC_HomeController();
         public T4MVC.Admin.SharedController Shared = new T4MVC.Admin.SharedController();

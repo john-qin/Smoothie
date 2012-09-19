@@ -16,7 +16,7 @@ namespace Smoothie.Domain.Repositories
             using (IDbConnection conn = OpenConnection())
             {
                 const string query = "SELECT Id, Name , ReOrder " +
-                                     "FROM    dbo.Category " +
+                                     "FROM    dbo.Category Where status = 3 " +
                                      "ORDER BY ReOrder";
                 return conn.Query<Category>(query);
             }

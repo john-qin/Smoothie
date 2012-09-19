@@ -47,11 +47,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoryService.cs" />
     <Compile Include="FoodService.cs" />
     <Compile Include="FormsAuthorizationService.cs" />
     <Compile Include="FormsAuthenticationService.cs" />
     <Compile Include="IAuthenticationService.cs" />
     <Compile Include="IAuthorizationService.cs" />
+    <Compile Include="ICategoryService.cs" />
     <Compile Include="IFoodService.cs" />
     <Compile Include="IMappingService.cs" />
     <Compile Include="ISmoothieService.cs" />

@@ -35,7 +35,7 @@ namespace Smoothie.Web.Areas.Admin.Controllers
             _mappingService = mappingService;
         }
 
-        [GET("Food/{status}")]
+        [GET("Food/{status:regex(^Approved|Pending|Deleted$)}")]
         public virtual ActionResult Index(string group, string page, string status)
         {
             if (String.IsNullOrWhiteSpace(group)) group = "";

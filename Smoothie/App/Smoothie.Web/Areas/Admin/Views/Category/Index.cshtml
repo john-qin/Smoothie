@@ -1,0 +1,44 @@
+﻿@using Smoothie.Domain.Enums
+@model IEnumerable<Smoothie.Domain.Entities.Category>
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    #categoryTB td, #categoryTB th { padding: 5px;text-align: left;}
+    
+</style>
+<div class="container">
+    <table id="categoryTB" style="width: 500px;">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                ReOrder
+            </th>
+            <th>
+                Status
+            </th>
+            <th>
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.ReOrder
+                </td>
+                <td>
+                    @((FoodStatus)item.Status)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

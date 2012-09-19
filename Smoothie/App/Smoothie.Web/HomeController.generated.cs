@@ -157,6 +157,7 @@ namespace Smoothie.Web.Controllers {
             public readonly string _UserProfile = "~/Views/Home/_UserProfile.cshtml";
             public readonly string About = "~/Views/Home/About.cshtml";
             public readonly string Blender = "~/Views/Home/Blender.cshtml";
+            public readonly string EmptySummary = "~/Views/Home/EmptySummary.cshtml";
             public readonly string GetCategory = "~/Views/Home/GetCategory.cshtml";
             public readonly string Index = "~/Views/Home/Index.cshtml";
             public readonly string Summary = "~/Views/Home/Summary.cshtml";
